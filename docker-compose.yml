@@ -32,7 +32,7 @@ services:
     container_name: phone-service-mysql
     environment:
     - MYSQL_ROOT_PASSWORD=secret
-    - MYSQL_DATABASE=phone
+    - MYSQL_DATABASE=phones
     - MYSQL_USER=admin
     - MYSQL_PASSWORD=secret
     ports:
@@ -51,7 +51,7 @@ services:
     - DATABASE_HOST=phone-service-mysql
     - DATABASE_USER=admin
     - DATABASE_PASSWORD=secret
-    - DATABASE_NAME=phone
+    - DATABASE_NAME=phones
     - DATABASE_PORT=8083
     - DISCOVERY_SERVICE_HOST=discovery-server
     - DISCOVERY_SERVICE_PORT=8761

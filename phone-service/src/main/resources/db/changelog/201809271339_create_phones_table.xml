@@ -7,17 +7,16 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
-            <column name="image_url" type="VARCHAR(255)">
+            <column name="imagen_url" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)">
+            <column name="nombre" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="price" type="BIGINT">
+            <column name="descripcion" type="VARCHAR(255)"/>
+            <column name="precio" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="version" type="BIGINT"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
