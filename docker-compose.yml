@@ -1,0 +1,72 @@
+version: '3'
+
+services:
+  discovery-server:
+    build: ./discovery-server
+    container_name: discovery-server
+    ports:
+    - 8761:8761
+
+  gateway-server:
+    build: ./gateway-server
+    container_name: gateway-server
+    ports:
+    - 8084:8084
+    depends_on:
+    - discovery-server
+    links:
+    - discovery-server
+
+  config-server:
+    build: ./config-server
+    container_name: config-server
+    ports:
+    - 8763:8763
+    depends_on:
+    - discovery-server
+    links:
+    - discovery-server
+
+  phone-service-mysql:
+    image: mysql:5.7
+    container_name: phone-service-mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=admin
+    - MYSQL_DATABASE=phone
+    - MYSQL_USER=phone
+    - MYSQL_PASSWORD=admin
+    ports:
+    - 3306:3306
+
+  phone-service:
+    build: ./phone-service
+    container_name: phone-service
+    depends_on:
+    - phone-service-mysql
+    - discovery-server
+    - config-server
+    ports:
+    - 8081:8081
+    environment:
+    - DATABASE_HOST=phone-service-mysql
+    - DATABASE_USER=admin
+    - DATABASE_PASSWORD=admin
+    - DATABASE_NAME=phone
+    - DATABASE_PORT=3306
+    - DISCOVERY_SERVICE_HOST=discovery-server
+    - DISCOVERY_SERVICE_PORT=8761
+    links:
+    - phone-service-mysql
+    - discovery-server
+    - config-server
+
+  order-service-mysql:
+    image: mysql:5.7
+    container_name: order-service-mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=secret
+    - MYSQL_DATABASE=order
+    - MYSQL_USER=order
+    - MYSQL_PASSWORD=secret
+    ports:
+    - 3307:3306
