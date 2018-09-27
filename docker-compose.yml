@@ -31,12 +31,12 @@ services:
     image: mysql:5.7
     container_name: phone-service-mysql
     environment:
-    - MYSQL_ROOT_PASSWORD=admin
+    - MYSQL_ROOT_PASSWORD=secret
     - MYSQL_DATABASE=phone
-    - MYSQL_USER=phone
-    - MYSQL_PASSWORD=admin
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=secret
     ports:
-    - 3306:3306
+    - 8083:8083
 
   phone-service:
     build: ./phone-service
@@ -50,23 +50,12 @@ services:
     environment:
     - DATABASE_HOST=phone-service-mysql
     - DATABASE_USER=admin
-    - DATABASE_PASSWORD=admin
+    - DATABASE_PASSWORD=secret
     - DATABASE_NAME=phone
-    - DATABASE_PORT=3306
+    - DATABASE_PORT=8083
     - DISCOVERY_SERVICE_HOST=discovery-server
     - DISCOVERY_SERVICE_PORT=8761
     links:
     - phone-service-mysql
     - discovery-server
     - config-server
-
-  order-service-mysql:
-    image: mysql:5.7
-    container_name: order-service-mysql
-    environment:
-    - MYSQL_ROOT_PASSWORD=secret
-    - MYSQL_DATABASE=order
-    - MYSQL_USER=order
-    - MYSQL_PASSWORD=secret
-    ports:
-    - 3307:3306
