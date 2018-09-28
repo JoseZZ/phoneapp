@@ -32,11 +32,10 @@ public class OrderResourceTest {
     @Test
     public void createOrderOK() throws Exception {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(1L);
         orderDTO.setNombre("Juan");
         orderDTO.setApellidos("Gomez Perez");
         orderDTO.setEmail("juan@gmail.com");
-        orderDTO.setTelefonos(Collections.singletonList(1L));
+        orderDTO.setItems(Collections.singletonList(1L));
         orderDTO.setTotal(45.76);
 
         Gson gson = new Gson();

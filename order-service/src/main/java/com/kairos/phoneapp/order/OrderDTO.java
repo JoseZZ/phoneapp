@@ -25,7 +25,7 @@ public class OrderDTO implements Serializable{
     private String email;
 
     @NotEmpty
-    private List<Long> telefonos;
+    private List<Long> items;
 
     @NotEmpty
     private Double total;

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +25,9 @@ public class OrderResource {
     private OrderService orderService;
 
     @Autowired
+    PhoneServiceProxy phoneServiceProxy;
+
+    @Autowired
     public OrderResource(OrderService orderService) {
         this.orderService = orderService;
     }
@@ -31,6 +35,8 @@ public class OrderResource {
     @PostMapping("/orders")
     public ResponseEntity<Object> createOrder(@Valid @RequestBody OrderDTO order){
         logger.info("POST /orders with request: {}", order.toString());
+        List<ItemDTO> items = phoneServiceProxy.getPhones();
+        // Validar telefonos
         OrderDTO orderCreated = orderService.save(order);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()

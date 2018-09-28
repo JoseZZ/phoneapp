@@ -32,15 +32,14 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void createBusinessTermOKTest()
+    public void createOrderOKTest()
     {
 
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(1L);
         orderDTO.setNombre("Juan");
         orderDTO.setApellidos("Gomez Perez");
         orderDTO.setEmail("juan@gmail.com");
-        orderDTO.setTelefonos(Collections.singletonList(1L));
+        orderDTO.setItems(Collections.singletonList(1L));
         orderDTO.setTotal(45.76);
 
         Order order = new Order();
@@ -55,7 +54,7 @@ public class OrderServiceTest {
         orderDTO = orderService.save(orderDTO);
 
         Assert.assertNotNull(orderDTO);
-        Assert.assertEquals(orderDTO.toString(), order.toString());
+        Assert.assertEquals(orderDTO.getNombre(), order.getNombre());
     }
 
 }
