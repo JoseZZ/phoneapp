@@ -1,11 +1,15 @@
 package com.kairos.phoneapp.order;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 public class ItemDTO implements Serializable {
 
     @NotNull
@@ -18,5 +22,5 @@ public class ItemDTO implements Serializable {
     private Long precio;
 
     @NotNull
-    private Order order;
+    private Long order;
 }

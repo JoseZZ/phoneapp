@@ -1,24 +1,30 @@
 package com.kairos.phoneapp.phone;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 public class PhoneDTO implements Serializable{
 
-    @NotNull
-    private final String imagenURL;
+    @NotEmpty
+    private Long id;
 
     @NotEmpty
-    private final String nombre;
+    private String nombre;
 
     @NotEmpty
-    private final String descripcion;
+    private String descripcion;
 
     @NotNull
-    private final Double precio;
+    private Double precio;
+
+    @NotNull
+    private String imagenURL;
 
 }
