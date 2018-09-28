@@ -19,7 +19,7 @@
       <column name="total" type="BIGINT">
         <constraints nullable="false"/>
       </column>
-      <column name="total" type="BIGINT"/>
+
     </createTable>
   </changeSet>
 </databaseChangeLog>

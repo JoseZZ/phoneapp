@@ -2,8 +2,7 @@
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-  <include file="201809281023_create_orders_table.xml" relativeToChangelogFile="true"/>
-  <include file="201809280900_create_items_table.xml" relativeToChangelogFile="true"/>
-  <include file="201809281045_order_initial_data.xml" relativeToChangelogFile="true"/>
-  <include file="201809280903_item_initial_data.xml" relativeToChangelogFile="true"/>
+  <changeSet author="Jose Gonzalez" id="201809281045">
+    <loadData tableName="orders" file="orders.csv" relativeToChangelogFile="true"/>
+  </changeSet>
 </databaseChangeLog>
